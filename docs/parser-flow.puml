@@ -1,0 +1,20 @@
+@startuml
+start
+:接收 Markdown 文本;
+:调用 MarkdownBlockExtractor 切分块;
+if (存在匹配块 ID) then (是)
+  :复用旧块 ID;
+else
+  :生成新 ULID;
+endif
+:解析 [[wikilink]];
+if (目标存在) then (是)
+  :写入 note_edge;
+else
+  :忽略并记录死链候选;
+endif
+:构建别名词典;
+:检测未链接提及;
+:写入 FTS5 索引;
+stop
+@enduml

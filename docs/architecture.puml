@@ -1,0 +1,18 @@
+@startuml
+package "app-core" {
+  class NoteService
+  class MarkdownBlockExtractor
+  class WikiLinkParser
+  class LinkQueryService
+}
+package "app-storage" {
+  class SQLiteNoteRepository
+}
+package "app-ui" {
+  class BidiNoteApp
+  class SeedGenerator
+}
+NoteService --> SQLiteNoteRepository : NoteRepository
+BidiNoteApp --> NoteService
+SeedGenerator --> NoteService
+@enduml

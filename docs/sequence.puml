@@ -1,0 +1,17 @@
+@startuml
+actor User
+participant BidiNoteApp
+participant NoteService
+participant SQLiteNoteRepository as Repo
+User -> BidiNoteApp : Edit markdown
+BidiNoteApp -> NoteService : save(markdown)
+NoteService -> Repo : saveNode
+NoteService -> Repo : findBlocksByPageId
+NoteService -> MarkdownBlockExtractor : extract
+MarkdownBlockExtractor --> NoteService : blocks
+NoteService -> Repo : saveBlocks
+NoteService -> Repo : saveEdges
+NoteService -> Repo : search
+NoteService --> BidiNoteApp : SaveResult
+BidiNoteApp --> User : Update UI
+@enduml
