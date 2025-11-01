@@ -61,8 +61,11 @@ public class LinkQueryService {
                 }
             }
         }
+        Set<String> filteredIds = filtered.stream()
+                .map(NoteNode::getId)
+                .collect(Collectors.toSet());
         List<NoteEdge> filteredEdges = edges.stream()
-                .filter(edge -> filtered.stream().anyMatch(node -> node.getId().equals(edge.getSrcPageId()) || node.getId().equals(edge.getDstPageId())))
+                .filter(edge -> filteredIds.contains(edge.getSrcPageId()) || filteredIds.contains(edge.getDstPageId()))
                 .collect(Collectors.toList());
         return new QueryResult(filtered, filteredEdges);
     }
