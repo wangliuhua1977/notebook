@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bidinote</groupId>
+  <artifactId>bidinote</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>app-core</module>
+    <module>app-storage</module>
+    <module>app-ui</module>
+  </modules>
+  <properties>
+    <maven.compiler.release>22</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>22</maven.compiler.source>
+    <maven.compiler.target>22</maven.compiler.target>
+    <junit.version>5.10.2</junit.version>
+  </properties>
+  <repositories>
+    <repository>
+      <id>aliyun-public</id>
+      <name>Aliyun Public Repository</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </repository>
+    <repository>
+      <id>aliyun-central</id>
+      <name>Aliyun Central Mirror</name>
+      <url>https://maven.aliyun.com/repository/central</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>aliyun-plugins</id>
+      <name>Aliyun Plugin Repository</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>aliyun-plugin-central</id>
+      <name>Aliyun Central Plugin Mirror</name>
+      <url>https://maven.aliyun.com/repository/central</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
